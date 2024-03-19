@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         List<String> lines = new ArrayList<>();
 
         // Citirea liniilor din fișier utilizând Scanner
@@ -16,9 +16,9 @@ public class Main {
                 lines.add(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Fișierul nu a fost găsit.");
-            return;
+            throw new RuntimeException(e);
         }
+
 
         // Afișarea conținutului fișierului
         System.out.println("Conținutul fișierului:");
@@ -41,7 +41,7 @@ public class Main {
         // Cautarea cuvantului "mere"
         boolean found = false;
         for (String line : lines) {
-            if (line.toLowerCase().contains("mere")) {
+            if (line.toLowerCase().contains("MERE")) {
                 found = true;
                 break;
             }
